@@ -1,19 +1,21 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using Topshelf;
 
 namespace WindowServiceTemplate
 {
     class Service : ServiceControl
     {
+        public string ServiceName { get; set; } = "Windows Service Name";
         bool ServiceControl.Start(HostControl hostControl)
         {
-            System.Console.WriteLine("Service started");
+            Log.Logger.Information("{ServiceName} has {event}", ServiceName, "started");
             return true;
         }
 
         bool ServiceControl.Stop(HostControl hostControl)
         {
-            System.Console.WriteLine("Service stopped");
+            Log.Logger.Information("{ServiceName} has {event}", ServiceName, "stopped");
             return true;
         }
     }
