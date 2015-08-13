@@ -26,6 +26,7 @@ namespace WindowServiceTemplate
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.ColoredConsole()
                 .WriteTo.RollingFile(@"logs/log-{Date}.txt")
+                .WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();
         }
     }
